@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify
 import psutil, platform, datetime, os
 
 app = Flask(__name__)
+APP_VERSION = os.getenv("APP_VERSION", "dev")
 
 def sysinfo():
     boot = datetime.datetime.fromtimestamp(psutil.boot_time())
@@ -19,6 +20,7 @@ def sysinfo():
             for p in psutil.disk_partitions(all=False)
             if os.path.ismount(p.mountpoint)
         ],
+	"app_version" : APP_VERSION,
     }
 
 @app.route("/")

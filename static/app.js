@@ -31,6 +31,7 @@ async function pull() {
     document.getElementById('memBar').style.width = mem + '%';
     document.getElementById('swapVal').innerHTML =
       `<div class="kv">Swap: ${d.swap_percent ?? 0}%</div>`;
+    document.getElementById('ver').textContent = d.app_version || '-';
 
     // disks
     const diskEl = document.getElementById('diskList');
